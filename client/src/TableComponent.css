@@ -1,0 +1,32 @@
+/* DataTable.css */
+.table-container {
+  overflow-x: auto;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.table {
+  width: 25%;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+}
+
+.table th,
+.table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.table th {
+  background-color: #aac2fa;
+}
+
+.even-row {
+  background-color: #eaeaea;
+}
+
+.odd-row {
+  background-color: #ffffff;
+}
+
