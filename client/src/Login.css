@@ -34,5 +34,5 @@ body {
 .register-button {
     width: 10em;
     justify-self: center;
-    color: greenyellow;
+    background-color: greenyellow;
 }

@@ -12,4 +12,6 @@ CREATE TABLE users (
 
 INSERT INTO users (fname, lname, username, password, phone_number, isAdmin) VALUES
 ('Neil', 'Chitale', 'neilc', 'pwd', '9284026955', TRUE),
+('Aarush', 'Sengupta', 'aarushs', 'pwd', '0000000000', FALSE),
+('Ira', 'Chitale', 'irac', 'passkey', '0000000000', FALSE),
 ('Ayush', 'Panwar', 'ayushp', 'pwd', '9407916962', FALSE);

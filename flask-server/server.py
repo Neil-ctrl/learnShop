@@ -32,11 +32,11 @@ def checkUser(username, password):
 
 def updateDatabase(fruitChoice, changedQty):
     conn = psycopg2.connect(
-        database="shop",#enter your database name
-        user='postgres',#enter your postgres username
-        password='pwd',#enter your password
-        host='localhost',#enter your host name
-        port='5432'#port number
+        database="shop",
+        user='postgres',
+        password='pwd',
+        host='localhost',
+        port='5432'
     )
     cur = conn.cursor()
     print(f'UPDATE fruits SET quantity = {changedQty} WHERE name = \'{fruitChoice}\';')
@@ -67,6 +67,60 @@ def refreshFruits():
     cur.close()
     conn.close()
     return data
+
+def userCheck(username, phone):
+    conn = psycopg2.connect(
+        database="shop",
+        user='postgres',
+        password='pwd',
+        host='localhost',
+        port='5432'
+    )
+    cur = conn.cursor()
+    cur.execute('select username, phone_number from users;')
+    rows = cur.fetchall()
+    cur.close
+    conn.close
+    for r in rows:
+        if (username == r[0]):
+            return 1
+        elif (phone == r[1]):
+            return 2
+    return 0
+
+
+def registerUser(fname, lname, username, password, phone):
+    conn = psycopg2.connect(
+        database="shop",
+        user='postgres',
+        password='pwd',
+        host='localhost',
+        port='5432'
+    )
+    cur = conn.cursor()
+    cur.execute(f'INSERT INTO users (fname, lname, username, password, phone_number, isAdmin) VALUES (\'{fname}\', \'{lname}\', \'{username}\', \'{password}\', \'{phone}\', FALSE);')
+    conn.commit()
+    print("USER REGISTERED SUCCESSFULLY!!!")
+    cur.close
+    conn.close
+
+@app.route("/register", methods=["POST"])
+def register():
+    data = request.get_json()
+    fname = data.get("fname")
+    lname = data.get("lname")
+    username = data.get("username")
+    password = data.get("password")
+    phone = data.get("phone")
+    print(fname, lname, username, password, phone)
+    status = userCheck(username, phone)
+    if status == 1:
+        return jsonify({"message": "Username already exists"}), 400
+    elif status == 2:
+        return jsonify({"message": "Another user already registered on this phone number"}), 400
+    elif status == 0:
+        registerUser(fname, lname, username, password, phone)
+        return jsonify({"message": "User registeres successfully"}), 200
 
 
 @app.route("/login", methods=["POST"])

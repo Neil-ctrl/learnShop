@@ -69,7 +69,7 @@ function Login({ setIsLoggedIn, setIsAdmin }) {
             <button className='login-button' type='submit'>Login</button>
         </div>
         <div>
-            <button className='register-button' onClick={handleRegister}>Register</button>
+            <button className='register-button' onClick={handleRegister}>Sign Up</button>
         </div>
         </form>
         
