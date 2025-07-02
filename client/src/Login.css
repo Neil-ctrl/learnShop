@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    height: 100vh;
+}
+
+.form-container div {
+    padding: 3px;
+    display: grid;
+    gap: 3px;
+    border-radius: 0.5em;
+    justify-items: center;
+}
+
+.header {
+    background-color:aquamarine;
+}
+
+.input input {
+    width: 10em;
+    text-align: center;
+}
+
+.error-text {
+    text-align: center;
+    font-style: italic;
+    color: red;
+}
+
+.login-button {
+    width: 10em;
+    justify-self: center;
+}
+
+.register-button {
+    width: 10em;
+    justify-self: center;
+    color: greenyellow;
+}
